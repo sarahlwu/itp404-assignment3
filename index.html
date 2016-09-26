@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="subreddit">
+  <button onclick="getSubreddits()">search</button>
+  <div id="subreddit-list"></div>
+
+  <script src="jquery-3.1.1.js"></script>
+  <script src="main.js"></script>
+  <script src="handlebars-v4.0.5.js"></script>
+
+  <script type="template/handlebars" id="subreddit-list-template">
+    {{#each post}}
+      <div class="subreddit">
+        <p>score: {{data.score}}</p>
+        <p>title: {{data.url}}</p>
+        <p>commentCount: {{data.num_comments}}</p>
+        {{#if data.archived}}
+          <p>Archived.</p>
+        {{else}}
+          <p>Not Archived.</p>
+        {{/if}}
+      </div>
+      <hr>
+    {{else}}
+      <p>Nothing found.</p>
+    {{/each}}
+  </script>
+</body>
+</html>
+
+<!-- displaying data -->
